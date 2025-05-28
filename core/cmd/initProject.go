@@ -5,17 +5,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var router string
+var route string
 
-var CrateInitProject = &cobra.Command{
+var CreateInitProject = &cobra.Command{
 	Use:   "init",
-	Short: "Define th e rpject and create a file if it do not exist (in the router is void it will init in the current route)",
+	Short: "Initializes the project and creates a file if it doesn't exist (uses current directory if no route is provided)",
 	Run: func(cmd *cobra.Command, args []string) {
-		internal.InitProjectPOI(router)
+		internal.InitProjectPOI(route)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(CrateInitProject)
-	CrateInitProject.Flags().StringVarP(&router, "route", "r", "", "Define the route")
+	rootCmd.AddCommand(CreateInitProject)
+	CreateInitProject.Flags().StringVarP(&route, "route", "r", "", "Define the route where to initialize the project")
 }
